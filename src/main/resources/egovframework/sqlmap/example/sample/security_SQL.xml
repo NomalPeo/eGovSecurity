@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="security">
+	
+	
+	<typeAlias  alias="securityVO" type="egovframework.example.security.CustomUserDetails"/>
+	
+	<resultMap id="security" class="egovframework.example.security.CustomUserDetails">
+		<result property="user_id" column="user_id" />
+		<result property="user_pwd" column="user_pwd" />
+		<result property="user_name" column="user_name" />
+		<result property="enabled" column="enabled" />
+		<result property="authority" column="authority" />
+	</resultMap>
+	
+	<select id="securityDAO.selectUser" resultMap="security">
+		select * from users where user_id = #user_id#
+	</select>
+	
+</sqlMap>
